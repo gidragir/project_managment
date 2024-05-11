@@ -4,11 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "private": "true",
-  "workspaces": [
-    "client",
-    "server"
-  ],
   "devDependencies": {
     "concurrently": "^8.2.0"
+  },
+  "scripts": {
+    "postinstall": "(cd host && yarn install) && (cd ../dashboard && yarn install)",
+    "host:client": "yarn --cwd host client",
+    "host:server": "yarn --cwd host server",
+    "host": "concurrently --kill-others  \"yarn host:server\" \"yarn host:client\"",
+    "dashboard:client": "yarn --cwd dashboard client",
+    "dashboard:server": "yarn --cwd dashboard server",
+    "dashboard": "concurrently --kill-others  \"yarn dashboard:server\" \"yarn dashboard:client\"",
+    "migrate": "yarn --cwd server prisma migrate dev --name $name",
+    "push": "yarn --cwd server prisma db push"
   }
+
 }

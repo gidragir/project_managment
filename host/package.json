@@ -1,0 +1,19 @@
+{
+  "name": "host",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": "true",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "scripts": {
+    "client": "yarn --cwd client dev",
+    "server": "yarn --cwd server start:dev",
+    "host": "concurrently --kill-others  \"yarn server\" \"yarn client\""
+  }
+
+}

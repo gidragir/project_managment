@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
@@ -7,10 +8,9 @@ module.exports = {
   },
   plugins: ['@typescript-eslint/eslint-plugin'],
   extends: [
+    'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
   ],
-  root: true,
   env: {
     node: true,
     jest: true,
@@ -21,5 +21,6 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'semi': 'off',
   },
 };
